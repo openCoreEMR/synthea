@@ -22,6 +22,17 @@ Generate synthetic patients:
 docker run --rm -v $(pwd)/output:/app/output synthea
 ```
 
+Generate 300 synthetic patients, CCDA only:
+
+```bash
+docker run --rm -ti -w "$PWD" -v "$PWD:$PWD" synthea \
+       --exporter.fhir.export false \
+       --exporter.ccda.export true \
+       --generate.only_alive_patients true \
+       -p 300
+```
+
+
 ### Custom Configuration
 
 To use custom configuration files:
